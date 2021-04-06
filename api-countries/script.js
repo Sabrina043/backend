@@ -1,0 +1,4 @@
+function getCountries(){
+    $ajax
+    url
+}
