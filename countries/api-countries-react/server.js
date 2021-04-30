@@ -1,7 +1,8 @@
-var express = require('express');
-var app = express();
+const express = require("express")
+const cors = require("cors")
+const { matches, teams } = require("./dataCountries.js")
 
-var port = 8000;
+const app = express()
+app.use(cors())
 
-app.get 
-    
+const port = 8000
