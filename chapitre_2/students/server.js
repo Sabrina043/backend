@@ -9,18 +9,26 @@ app.use(cors())
 
 const port = 8000;
 
-app.get(`./student/`,(req, res)=>{
+app.get('/students',(req, res)=>{
 
-    res.json(datastudents)
+    res.json(students)
 
 })
 
-app.get(`./post/student/`)
+app.post('/students', (req,res)=>{
+    const newName = req.body
+
+    students.push(newName)
+
+    res.json({
+        message: 'name added'
+    })
+
+})
 
 
 
 
 
 
-app.json(port,()=>{console.log("server à l'ecoute dans le port" + port)})
-
+app.listen(port,()=>{console.log("server à l'ecoute dans le port" + port)})
