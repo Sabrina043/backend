@@ -3,31 +3,32 @@ const cors = require('cors');
 const{superHeros}= require('./dataheros')
 const app = express()
 
-// je ne sais plus si je doit mettre app.use(express()) ou pas...
-// const port = 8000;Non plus...
+const port = 8000;
 // app.get('/dataheros',(req, res)=>{ res.json(superHeros)}) ça pareille
 
 
+app.use(express())
 app.use(cors())
 
-app.use(function(req,res,next){
+app.use((req,res,next) => {
     
-    console.log(superHeros());
+    console.log(next());
+    
 
 });
 
-app.get("/", function(req,res){
+app.get("/hero/dataheros",(req,res) =>{
 
-    console.log("dataheros");
-    res.send("dataheros")
-
-})
-
-
-app.listen(8000, function(){
-
-    console.log("server started");
+    res.json("dataheros");
+    // res.send("")
 
 })
+
+
+// app.listen(8000, function(){
+
+//     console.log("server started");
+
+// })
 
 
