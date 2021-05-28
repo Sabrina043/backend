@@ -20,7 +20,17 @@ app.use((req,res,next) => {
 
 
 app.get("/heroes",(req,res) =>{
+
+    res.json(superHeros)
+});
+
+
+
+app.get("/heroes/:name",(req,res) =>{
+    let myHeroes = req.params.name
+    res.json(`mon super heros ${myHeroes}`)
 })
+
 
 
 app.listen(8000, function(){
