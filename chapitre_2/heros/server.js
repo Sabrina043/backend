@@ -1,27 +1,25 @@
 const express = require('express');
+const {superHeros} = require('./dataheros')
 const cors = require('cors');
-const{superHeros}= require('./dataheros')
 const app = express()
 
 const port = 8000;
-app.get('/dataheros',(req, res)=>{ res.json(superHeros)}) 
 
-
-app.use(express())
+app.use(express.json())
 app.use(cors())
+
+
 
 app.use((req,res,next) => {
     
-    console.log();
+    console.log("ma requete");
     
     next()
 });
 
-app.get("/heros/dataheros/superHeros",(req,res) =>{
-    
-    res.json("dataheros");
-    res.send("dataheros", req.params.name)
 
+
+app.get("/heroes",(req,res) =>{
 })
 
 
