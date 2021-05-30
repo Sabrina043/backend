@@ -26,10 +26,24 @@ app.get("/heroes",(req,res) =>{
 
 
 
-app.get("/heroes/:name",(req,res) =>{
-    let myHeroes = req.params.name
-    res.json(`mon super heros ${myHeroes}`)
-})
+app.get("/heroes/:myHeroe",(req,res) =>{
+
+    const myHeroe = req.params.myHeroe
+    // res.json(`mon super heros ${myHeroe}`)
+
+    const dataHeroe = superHeros.find(elem => {
+
+        return elem.name.toLocaleLowerCase()=== myHeroe.toLocaleLowerCase()
+    })
+    res.json(dataHeroe)
+});
+
+
+
+
+
+
+
 
 
 
