@@ -26,25 +26,22 @@ app.get("/heroes",(req,res) =>{
 
 
 
-app.get("/heroes/:myHeroe",(req,res) =>{
+app.get("/heroes/:name",(req,res) =>{
 
-    const myHeroe = req.params.myHeroe
-    // res.json(`mon super heros ${myHeroe}`)
+    const myHeroe = req.params.name
+    console.log(req.params.name);
 
     const dataHeroe = superHeros.find(elem => {
 
-        return elem.name.toLocaleLowerCase()=== myHeroe.toLocaleLowerCase()
-    })
-    res.json(dataHeroe)
+        return elem.name.toLowerCase()=== myHeroe.toLowerCase()
+    });
+
+    if(myHeroe){
+        res.json({
+            dataHeroe
+        })
+    }
 });
-
-
-
-
-
-
-
-
 
 
 app.listen(8000, function(){
