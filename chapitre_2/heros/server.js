@@ -46,16 +46,17 @@ app.get("/heroes/:name", (req, res) => {
 
 app.get("/heroes/:name/powers", (req, res) => {
 
-    const dataPowers = req.params.powers
-    const heroesPowers = superHeros.find(superHeros =>{
+    const myHeroe = req.params.name
 
-        return superHeros.power.toLowerCase() === superHeros.toLowerCase()
+    const dataHeroe = superHeros.find(elem => {
+
+        return elem.name.toLowerCase() === myHeroe.toLowerCase()
     });
 
-    if(heroesPowers){
-        res.json({
-            dataPowers
-        });
+    if (myHeroe) {
+        res.json(
+            dataHeroe.power
+        )
     }
 
 })
