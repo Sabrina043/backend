@@ -1,5 +1,5 @@
 const express = require('express');
-const {superHeros} = require('./dataheros')
+const { superHeros } = require('./dataheros')
 const cors = require('cors');
 const app = express()
 
@@ -10,33 +10,33 @@ app.use(cors())
 
 
 
-app.use((req,res,next) => {
-    
+app.use((req, res, next) => {
+
     console.log("ma requete");
-    
+
     next()
 });
 
 
 
-app.get("/heroes",(req,res) =>{
+app.get("/heroes", (req, res) => {
 
     res.json(superHeros)
 });
 
 
 
-app.get("/heroes/:name",(req,res) =>{
+app.get("/heroes/:name", (req, res) => {
 
     const myHeroe = req.params.name
-    console.log(req.params.name);
+    // console.log(req.params.name);
 
     const dataHeroe = superHeros.find(elem => {
 
-        return elem.name.toLowerCase()=== myHeroe.toLowerCase()
+        return elem.name.toLowerCase() === myHeroe.toLowerCase()
     });
 
-    if(myHeroe){
+    if (myHeroe) {
         res.json({
             dataHeroe
         })
@@ -44,7 +44,24 @@ app.get("/heroes/:name",(req,res) =>{
 });
 
 
-app.listen(8000, function(){
+app.get("/heroes/:name/powers", (req, res) => {
+
+    const dataPowers = req.params.powers
+    const heroesPowers = superHeros.find(superHeros =>{
+
+        return superHeros.power.toLowerCase() === superHeros.toLowerCase()
+    });
+
+    if(heroesPowers){
+        res.json({
+            dataPowers
+        });
+    }
+
+})
+
+
+app.listen(8000, function () {
 
     console.log("server started");
 
