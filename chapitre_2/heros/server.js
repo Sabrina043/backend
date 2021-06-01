@@ -58,8 +58,36 @@ app.get("/heroes/:name/powers", (req, res) => {
             dataHeroe.power
         )
     }
-
+    
 })
+
+const transformName = (req, res, next) => {
+
+    if (req.body.name === undefined) {
+        res.json({
+            erroMessage: "il faut envoyé un nom"
+        })
+    } else {
+        req.body.name = req.body.name.toLowerCase()
+
+        next()
+    }
+
+}
+
+
+app.post("/heroes/:name", transformName, (req, res) => {
+
+    const newHeroe = req.body
+
+    superHeros.push(newHeroe)
+
+    res.json({
+        message : "ok hero ajouté",
+        newHeroe
+    })
+})
+
 
 
 app.listen(8000, function () {
