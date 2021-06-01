@@ -89,6 +89,31 @@ app.post("/heroes/:name", transformName, (req, res) => {
 })
 
 
+// app.post("/heroes/:name/powers", (req, res) => {
+//     const nameHero = req.params.name.toLowerCase()
+
+//     const selectedHero = superHeros.find(elem => {
+//         return nameHero === elem.name.toLowerCase()
+//     })
+
+//     if (selectedHero) {
+
+
+//         const heroPower = req.body.power
+
+//         selectedHero.powers.push(heroPower)
+
+//         res.json({
+//             message: `Power added! The powers of ${nameHero} are ${selectedHero.powers}`
+//         })
+//     } else {
+//         res.json({
+//             errorMessage: "Hero not found"
+//         })
+//     }
+// })
+
+
 
 app.listen(8000, function () {
 
