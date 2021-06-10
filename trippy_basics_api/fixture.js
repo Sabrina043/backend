@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const model_trippy = require("./model_trippy")
+const {Hotel, Restaurant} = require("./model_trippy")
 
 
 
@@ -21,16 +21,15 @@ const addHotel = async () => {
 
     try {
 
-        await hotel.deletMany({})
+        await Hotel.deletMany({})
 
-        await hotel.insertMany([{
+        await Hotel.insertMany([{
 
             name: "villa jardin  de l'ocean",
             address: "Chemin de la Plage Quartier Tamawanza, Agadir 80000 Maroc",
             city: "Agadir",
             country: "Maroc",
             stars: 5,
-            cuisine: "Marocaine",
             hasSpa: true,
             hasPool:  true,
             priceCategory: 2
@@ -45,6 +44,8 @@ const addHotel = async () => {
 }
 
 addHotel()
+
+
 
 const addRestaurant = async () => {
 
