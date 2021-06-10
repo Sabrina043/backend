@@ -1,38 +1,14 @@
+const express = require('express')
+const cors = require("cors")
 const mongoose = require('mongoose')
+const {Hotel, Restaurant} =require("./model_trippy")
 
+const app = express()
+app.use(express.json())
+app.use(cors())
 
+const port = 8002
 
-const HotelSchema = new mongoose.Schema({
-
-    name: String,
-    address:  String,
-    city:  String,
-    country:  String,
-    stars:  Number,                 /*qui ira de 1 à 5*/
-    hasSpa: Boolean,
-    hasPool:  Boolean,
-    priceCategory: Number           /*qui ira de 1 à 3*/
-
-})
-
-const Hotel = mongoose.model("hotel", HotelSchema)
-
-module.exports = Hotel
-
-
-const RestaurantSchema = new mongoose.Schema({
-
-    name: String,
-    address: String,
-    city: String,
-    country: String,
-    stars: Number,                       /*qui ira de 1 à 5*/
-    cuisine: String,
-    priceCategory: Number               /*qui ira de 1 à 3*/
-
-})
-
-
-const Restaurant = mongoose.model("restaurant", RestaurantSchema)
-
-module.exports = Restaurant
+app.listen(port, () => {
+        console.log("Mon port est à l'ecoute sur le port :" + port)
+});

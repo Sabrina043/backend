@@ -1,22 +1,9 @@
 const mongoose = require('mongoose')
-const Hotel = require("./trippy_basics")
-const Restaurant = require("./trippy_basics")
+const model_trippy = require("./model_trippy")
 
 
-mongoose.connect('mongodb://localhost:27017/hotelDB', (err) => {
 
-    if (err) {
-
-        console.error(err);
-
-    } else {
-
-        console.log('je suis dans ma database');
-    }
-
-})
-
-mongoose.connect('mongodb://localhost:27017/restaurantDB', (err) => {
+mongoose.connect('mongodb://localhost:27017/trippy_basics', (err) => {
 
     if (err) {
 
@@ -44,10 +31,45 @@ const addHotel = async () => {
             country: "Maroc",
             stars: 5,
             cuisine: "Marocaine",
+            hasSpa: true,
+            hasPool:  true,
             priceCategory: 2
         }
         ])
-
+        console.log("The collection hotel was recreated with the base data");
+    }catch (err) {
+        console.error(err)
     }
 
+
 }
+
+addHotel()
+
+const addRestaurant = async () => {
+
+    try {
+
+        await Restaurant.deletMany({})
+
+        await Restaurant.insertMany([{
+
+            name: "les pâtes vivantes",
+            address: "3 rue de turbigo - 75001",
+            city: "Paris",
+            country: "France",
+            stars: 4,
+            cuisine: "asiatique",
+            priceCategory: 2
+        }
+        ])
+        console.log("La collection Restaurant a été recréé avec les données de base");
+    }catch (err) {
+        console.error(err)
+    }
+
+
+}
+
+addRestaurant()
+
