@@ -1,13 +1,61 @@
-const mongoose = require("mongoose")
+const express = require('express')
+const expressValidator = require("express-validator");
+const passwordValidator = require('password-validator');
 
-const studentsSchema = mongoose.Schema({
-    username: String,
-    email: String,
-    age: Number,
-    city: String,
+const app = express();
+
+app.use(express.json());
+
+app.post('/signup',
     
-})
+    expressValidator.body("username").custom(value => {
 
-const Student = mongoose.model("Student", studentsSchema)
+        var schema = new expressValidator
+        
+        schema
 
-module.exports = Student
+        is().max(4)
+
+    }) 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    .isEmail() .isAge() .isCity() ,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // expressValidator.body("password"). custom((value) =>{
+
+    //     var schema = new passwordValidator();
+
+    //     schema
+
+    //     is()
+    //     is()
+    //     Has()
+    //     Has()
+    //     Has()
+    //     Has()
+    // })
+)
+
+
+
