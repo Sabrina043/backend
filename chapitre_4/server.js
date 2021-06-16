@@ -1,6 +1,6 @@
 const express = require("express");
 const expressValidator = require("express-validator");
-const passwordValidator = require('password-validator');
+// const passwordValidator = require('password-validator');
 
 const app = express();
 
@@ -10,33 +10,17 @@ const port = 9001;
 app.use(express.json());
 
 
-app.get("/", (req, res) => {
-
-    res.send()
-
-})
+router.get("/", sendValidation)
 
 
 
-app.post("/users/add", (req, res) => {
-
-    res.send()
-
-})
+router.post("/users/add", add)
 
 
-app.get("/users/:username", (req,res) => {
-
-    res.send()
-
-})
+router.get("/users/:username", username)
 
 
-app.get("/users/:email", (req, res) => {
-
-    res.send()
-
-})
+router.get("/users/:email", email)
 
 
 app.listen(port, () => {
