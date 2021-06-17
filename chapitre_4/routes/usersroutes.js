@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.router()
-const {continueIfValidationExists, continueIfValidationDoesntExists, transformName} = require("../middlewares/validmiddelwares")
+const {continueIfValidationExists, continueIfValidationDoesntExists, transformName} = require("../middlewares/usermiddelwares")
 
 const {
     sendValidationlist
