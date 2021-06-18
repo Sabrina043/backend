@@ -1,11 +1,8 @@
 const express = require("express");
-const router = express.router()
-const {continueIfValidationExists, continueIfValidationDoesntExists, transformName} = require("../middlewares/usermiddelwares")
+const router = express.router();
+const {continueIfUserExists, continueIfUserDoesntExists, transformName} = require("../middlewares/usermiddelwares")
 
-const {
-    sendValidationlist
-    
-}
+const {sendUserList} = require("../controllers/userController")
 
 const app = express();
 
@@ -15,7 +12,7 @@ const port = 9001;
 app.use(express.json());
 
 
-router.get("/", sendValidation)
+router.get("/", sendUserList)
 
 
 
@@ -31,3 +28,11 @@ router.get("/users/:email", email)
 app.listen(port, () => {
     console.log("je suis à l'écoute sur le port: " + port);
 });
+
+module.exports = {
+    userRoutes: router,
+    continueIfUserExists,
+    continueIfUserDoesntExists,
+    transformName
+    
+}

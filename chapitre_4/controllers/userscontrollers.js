@@ -1,7 +1,7 @@
 const userModel = require("../model/usermodel")
 const { findUsers } = require("../utils/usersfunction")
 
-const sendUsersList = async (req, res) => {
+const sendUserList = async (req, res) => {
 
     try{
         const user = await usersModel.find().populate() .select ({
@@ -21,6 +21,8 @@ const sendUsersList = async (req, res) => {
     }
 
 }
+
+sendUserList()
 
 
 
