@@ -20,10 +20,10 @@ const addUsers = async () => {
 
             {
                 ville: "Paris"
-            }
+            },
             {
                 ville: "los Angeles"
-            }
+            },
             {
                 ville: "Tokyo"
             }
@@ -39,13 +39,13 @@ const addUsers = async () => {
                 email: "sabrina@sabrina.fr",
                 age:28,
                 ville: "Paris"
-            }
+            },
             {
                 name: "Asma",
                 email: "asma@asma.fr",
                 age: 24,
                 ville: "Tokyo"
-            }
+            },
             {
                 name: "Rocio",
                 email: "rocio@rocio.fr",
@@ -55,4 +55,18 @@ const addUsers = async () => {
         ])
     }
 
-} 
+}
+
+const showUser = async () => {
+    try {
+        const user = await heroModel.find({}).populate("")
+
+        console.log("user", userModel);
+        console.log("user1", user[1].userModel);
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+showUser()
