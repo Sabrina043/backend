@@ -7,7 +7,7 @@ mongoose.connect("mongodb://localhost:27017/usersDB", (err) => {
         console.error(err);
 
     } else {
-        console.log("je suis conecter a ma database")
+        console.log("je suis connecter à ma database")
     }
 })
 
@@ -51,11 +51,18 @@ const addUsers = async () => {
                 email: "rocio@rocio.fr",
                 age: 26,
                 ville: "Los Angeles"
-            }
+            },
         ])
+        console.log("La collection user a été recréée avec les données de base.");
+
+    } catch (err) {
+        console.error();
     }
 
 }
+
+addUsers()
+
 
 const showUser = async () => {
     try {
@@ -70,3 +77,4 @@ const showUser = async () => {
 }
 
 showUser()
+
