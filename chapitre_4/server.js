@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const { userRoutes } = require("./routes/usersroutes");
+const { debug } = require("./middlewares/debug")
 
 mongoose.connect("mongodb://localhost:27017/validationDB", { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
     if (err) {
