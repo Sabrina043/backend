@@ -4,14 +4,6 @@ const {continueIfUserExists, continueIfUserDoesntExists, transformName} = requir
 
 const {sendUserList} = require("../controllers/userController")
 
-const app = express();
-
-const port = 9001;
-
-
-app.use(express.json());
-
-
 router.get("/", sendUserList)
 
 
