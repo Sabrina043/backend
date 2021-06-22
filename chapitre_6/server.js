@@ -23,7 +23,26 @@ app.use(cors())
 app.use(express.json())
 
 
-app.use("/signup")
+app.post("/signup", async (req, res) => {
+
+    try {
+
+        const username = req.body.username
+        const password = req.body.password
+        const bscript = 
+        const user = await userModel.create(username, password)
+
+        if(user){
+
+            res.json(username, password)
+
+        }
+
+    }catch (error) {
+        console.error('ça ne fonctionne pas...');
+    }
+
+})
 
 
 app.listen(port, () => {
