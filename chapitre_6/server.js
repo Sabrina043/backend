@@ -18,8 +18,6 @@ mongoose.connect("mongodb://localhost:27017/signup", (err) => {
 const port = 9000
 
 const app = express()
-
-app.use(cors())
 app.use(express.json())
 
 
@@ -29,14 +27,12 @@ app.post("/signup", async (req, res) => {
 
         const username = req.body.username
         const password = req.body.password
-        const bscript = 
-        const user = await userModel.create(username, password)
+        const result = bcryptjs.hashSync(password)
+        const user = await userModel.create(username, result)
 
-        if(user){
+            res.json(user)
 
-            res.json(username, password)
-
-        }
+        
 
     }catch (error) {
         console.error('ça ne fonctionne pas...');
